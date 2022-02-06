@@ -1,13 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-
 import AboutPage from "./AboutPage";
 import CoursesPage from "./courses/CoursesPage";
 import HomePage from "./HomePage";
 import Header from "./common/Header";
 import PageNotFound from "./PageNotFound";
-
 
 const App = () => {
   return (
