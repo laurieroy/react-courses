@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as courseActions from "../../redux/actions/courseActions";
 import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
 
 class CoursesPage extends Component {
   state = {
@@ -53,10 +52,8 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(courseActions, dispatch),
-  };
-}
+const mapDispatchToProps = {
+  createCourse: courseActions.createCourse,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
