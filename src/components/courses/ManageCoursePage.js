@@ -8,7 +8,9 @@ import { loadCourses, saveCourse } from "../../redux/actions/courseActions";
 import { newCourse } from "../../../tools/mockData";
 // eslint-disable-next-line no-unused-vars
 import { handleError } from "../../api/apiUtils";
+import { Toast } from "react-toastify/dist/components";
 import Spinner from "../common/Spinner";
+import { toast } from "react-toastify";
 
 function ManageCoursePage({
   courses,
@@ -22,6 +24,7 @@ function ManageCoursePage({
   const [course, setCourse] = useState({ ...props.course });
   // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState();
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (authors.length === 0) {
@@ -53,7 +56,9 @@ function ManageCoursePage({
   function handleSave(e) {
     e.preventDefault();
 
+    setSaving(true);
     saveCourse(course).then(() => {
+      toast.success("Course saved.");
       history.pushState("/courses");
     });
   }
@@ -67,6 +72,7 @@ function ManageCoursePage({
       authors={authors}
       onChange={handleChange}
       onSave={handleSave}
+      saving={saving}
     />
   );
 }
