@@ -8,6 +8,7 @@ import { loadCourses, saveCourse } from "../../redux/actions/courseActions";
 import { newCourse } from "../../../tools/mockData";
 // eslint-disable-next-line no-unused-vars
 import { handleError } from "../../api/apiUtils";
+import Spinner from "../common/Spinner";
 
 function ManageCoursePage({
   courses,
@@ -57,7 +58,9 @@ function ManageCoursePage({
     });
   }
 
-  return (
+  return authors.length === 0 || courses.length === 0 ? (
+    <Spinner />
+  ) : (
     <CourseForm
       course={course}
       errors={errors}

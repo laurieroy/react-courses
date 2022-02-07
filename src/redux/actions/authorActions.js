@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 import * as authorApi from "../../api/authorApi";
-// import loadCoursesSuccess from "";
+import { beginApiCall } from "./apiStatusActions";
 
 export function createCourse(course) {
   return { type: types.CREATE_COURSE_SUCCESS, course };
@@ -13,6 +13,7 @@ export function loadAuthorsSuccess(authors) {
 
 export function loadAuthors() {
   return function (dispatch) {
+    dispatch(beginApiCall());
     return authorApi
       .getAuthors()
       .then((authors) => {
