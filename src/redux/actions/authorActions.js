@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 import * as authorApi from "../../api/authorApi";
-import { beginApiCall } from "./apiStatusActions";
+import { apiCallError, beginApiCall } from "./apiStatusActions";
 
 // export function createCourse(course) {
 //   return { type: types.CREATE_COURSE_SUCCESS, course };
@@ -20,6 +20,7 @@ export function loadAuthors() {
         dispatch(loadAuthorsSuccess(authors));
       })
       .catch((error) => {
+        dispatch(apiCallError(error));
         throw error;
       });
   };
