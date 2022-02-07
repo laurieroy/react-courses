@@ -27,7 +27,7 @@ class CoursesPage extends Component {
     return (
       <>
         <h2>Courses</h2>
-        <CourseList course={this.props.courses} />
+        <CourseList courses={this.props.courses} />
       </>
     );
   }
