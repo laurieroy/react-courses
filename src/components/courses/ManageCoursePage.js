@@ -12,6 +12,7 @@ import { handleError } from "../../api/apiUtils";
 function ManageCoursePage({
   courses,
   authors,
+  history,
   loadAuthors,
   loadCourses,
   saveCourse,
@@ -49,7 +50,9 @@ function ManageCoursePage({
   function handleSave(e) {
     e.preventDefault();
 
-    saveCourse(course);
+    saveCourse(course).then(() => {
+      history.pushState("/courses");
+    });
   }
 
   return (
@@ -67,6 +70,7 @@ ManageCoursePage.propTypes = {
   authors: PropTypes.array.isRequired,
   course: PropTypes.object.isRequired,
   courses: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
   loadAuthors: PropTypes.func.isRequired,
   loadCourses: PropTypes.func.isRequired,
   saveCourse: PropTypes.func.isRequired,
