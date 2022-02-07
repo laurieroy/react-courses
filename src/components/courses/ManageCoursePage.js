@@ -24,7 +24,7 @@ function ManageCoursePage({
 }) {
   const [course, setCourse] = useState({ ...props.course });
   // eslint-disable-next-line no-unused-vars
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
@@ -49,6 +49,19 @@ function ManageCoursePage({
       ...prevCourse,
       [name]: name === "authorId" ? parseInt(value) : value,
     }));
+  };
+
+  const formIsValid = () => {
+    const { title, authorId, category } = course;
+    const errors = {};
+
+    if (!title) errors.title = "Title is required.";
+    if (!authorId) errors.author = "Author is required";
+    if (!category) errors.category = "Category is required";
+
+    setErrors(errors);
+    // Form is valid if the errors object still has no properties
+    return Object.keys(errors).length === 0;
   };
 
   // eslint-disable-next-line no-unused-vars
