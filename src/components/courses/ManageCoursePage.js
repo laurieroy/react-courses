@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import { toast } from "react-toastify";
+
 import CourseForm from "./CourseForm";
+import Spinner from "../common/Spinner";
+
 import { loadAuthors } from "../../redux/actions/authorActions";
 import { loadCourses, saveCourse } from "../../redux/actions/courseActions";
 import { newCourse } from "../../../tools/mockData";
 // eslint-disable-next-line no-unused-vars
 import { handleError } from "../../api/apiUtils";
-import { Toast } from "react-toastify/dist/components";
-import Spinner from "../common/Spinner";
-import { toast } from "react-toastify";
 
 function ManageCoursePage({
   courses,
@@ -59,7 +60,7 @@ function ManageCoursePage({
     setSaving(true);
     saveCourse(course).then(() => {
       toast.success("Course saved.");
-      history.pushState("/courses");
+      history.push("/courses");
     });
   }
 

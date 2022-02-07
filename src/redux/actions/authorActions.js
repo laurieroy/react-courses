@@ -2,9 +2,9 @@ import * as types from "./actionTypes";
 import * as authorApi from "../../api/authorApi";
 import { beginApiCall } from "./apiStatusActions";
 
-export function createCourse(course) {
-  return { type: types.CREATE_COURSE_SUCCESS, course };
-}
+// export function createCourse(course) {
+//   return { type: types.CREATE_COURSE_SUCCESS, course };
+// }
 
 // would then also make an error case
 export function loadAuthorsSuccess(authors) {
